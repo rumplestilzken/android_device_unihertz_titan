@@ -1,26 +1,31 @@
-$(call inherit-product, device/unihertz/common.mk)
+#
+# Copyright (C) 2022-2023 The LineageOS Project
+#
+# SPDX-License-Identifier: Apache-2.0
+#
 
-#Treble
-#PRODUCT_FULL_TREBLE :=  true
-#PRODUCT_FULL_TREBLE_OVERRIDE := true
+# A/B
+$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
 
-#PRODUCT_RELEASE_NAME := Titan
+AB_OTA_POSTINSTALL_CONFIG += \
+    RUN_POSTINSTALL_system=true \
+    POSTINSTALL_PATH_system=system/bin/otapreopt_script \
+    FILESYSTEM_TYPE_system=ext4 \
+    POSTINSTALL_OPTIONAL_system=true
 
-# Device identifier. This must come after all inclusions
-#PRODUCT_DEVICE = gargoyle
-#PRODUCT_BRAND = Unihertz
-#PRODUCT_SYSTEM_BRAND = Unihertz
-#PRODUCT_MANUFACTURER = A-gold
-#PRODUCT_NAME = Titan
-#PRODUCT_MODEL = Titan
+AB_OTA_POSTINSTALL_CONFIG += \
+    RUN_POSTINSTALL_vendor=true \
+    POSTINSTALL_PATH_vendor=bin/checkpoint_gc \
+    FILESYSTEM_TYPE_vendor=ext4 \
+    POSTINSTALL_OPTIONAL_vendor=true
 
 RESOURCE_PATH := device/unihertz/gargoyle/
 
 PRODUCT_COPY_FILES += \
-	$(RESOURCE_PATH)/rumplestilzken_firstboot.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/rumplestilzken_firstboot.sh \
+	$(RESOURCE_PATH)/init/rumplestilzken_firstboot.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/rumplestilzken_firstboot.sh \
 
 PRODUCT_COPY_FILES += \
-	$(RESOURCE_PATH)/excluded-input-devices.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/excluded-input-devices.xml \
+	$(RESOURCE_PATH)/input/excluded-input-devices.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/excluded-input-devices.xml \
 
 #Copy keyboard files into place.
 PRODUCT_COPY_FILES += \
