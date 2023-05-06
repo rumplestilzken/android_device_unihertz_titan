@@ -1,5 +1,3 @@
-#include device/phh/treble/tdgsi_arm64_ab/BoardConfig.mk
-
 DEVICE_PATH := device/unihertz/gargoyle
 
 # A/B
@@ -16,7 +14,17 @@ AB_OTA_PARTITIONS += \
     vbmeta_system \
     vendor
 
+DISABLE_DEXPREOPT_CHECK=true
+
+# Display
+TARGET_SCREEN_DENSITY := 400
+
 #Kernel
+TARGET_PREBUILT_KERNEL := 
+HAS_PREBUILT_KERNEL := false
+TARGET_NO_KERNEL := false
+TARGET_NO_KERNEL_OVERRIDE := false
+
 KERNEL_ARCH := arm64
 KERNEL_NO_GCC = false
 TARGET_KERNEL_CONFIG := titan_emmc_defconfig
@@ -26,9 +34,10 @@ TARGET_KERNEL_USE_CLANG = false
 TARGET_KERNEL_SOURCE := kernel/unihertz/gargoyle
 
 #Kernel
-BOARD_BOOTIMG_HEADER_VERSION := 2
+BOARD_BOOT_HEADER_VERSION := 2
 BOARD_KERNEL_IMAGE_NAME = Image.gz
 BOARD_KERNEL_SEPARATED_DTBO := true
+BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 buildvariant=user 
 BOARD_KERNEL_BASE := 1409285888
 BOARD_KERNEL_OFFSET := 3959947520
@@ -60,7 +69,7 @@ ENABLE_CPUSETS := true
 ENABLE_SCHEDBOOST := true
 
 # Metadata
-BOARD_USES_METADATA_PARTITION := true
+BOARD_USES_METADATA_PARTITION := false
 
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 33554432
