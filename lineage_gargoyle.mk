@@ -15,10 +15,10 @@ $(call inherit-product, device/unihertz/gargoyle/device.mk)
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 # Device identifier. This must come after all inclusions
-PRODUCT_DEVICE = gargoyle
+PRODUCT_DEVICE = Titan
 PRODUCT_BRAND = Unihertz
 PRODUCT_SYSTEM_BRAND = Unihertz
 PRODUCT_MANUFACTURER = A-gold
-PRODUCT_NAME = lineage_gargoyle
+PRODUCT_NAME = lineage_titan
 PRODUCT_MODEL = Titan
 

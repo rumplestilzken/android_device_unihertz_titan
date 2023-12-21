@@ -5,21 +5,21 @@
 #
 
 # A/B
-$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
+#$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
+#
+#AB_OTA_POSTINSTALL_CONFIG += \
+#    RUN_POSTINSTALL_system=true \
+#    POSTINSTALL_PATH_system=system/bin/otapreopt_script \
+#    FILESYSTEM_TYPE_system=ext4 \
+#    POSTINSTALL_OPTIONAL_system=true
+#
+#AB_OTA_POSTINSTALL_CONFIG += \
+#    RUN_POSTINSTALL_vendor=true \
+#    POSTINSTALL_PATH_vendor=bin/checkpoint_gc \
+#    FILESYSTEM_TYPE_vendor=ext4 \
+#    POSTINSTALL_OPTIONAL_vendor=true
 
-AB_OTA_POSTINSTALL_CONFIG += \
-    RUN_POSTINSTALL_system=true \
-    POSTINSTALL_PATH_system=system/bin/otapreopt_script \
-    FILESYSTEM_TYPE_system=ext4 \
-    POSTINSTALL_OPTIONAL_system=true
-
-AB_OTA_POSTINSTALL_CONFIG += \
-    RUN_POSTINSTALL_vendor=true \
-    POSTINSTALL_PATH_vendor=bin/checkpoint_gc \
-    FILESYSTEM_TYPE_vendor=ext4 \
-    POSTINSTALL_OPTIONAL_vendor=true
-
-RESOURCE_PATH := device/unihertz/gargoyle/
+RESOURCE_PATH := device/unihertz/titan/
 
 PRODUCT_COPY_FILES += \
 	$(RESOURCE_PATH)/init/rumplestilzken_firstboot.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/rumplestilzken_firstboot.sh \
